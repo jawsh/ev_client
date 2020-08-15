@@ -1,26 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import { Overview } from "./components/Overview";
+import { Article } from "./components/Article";
+import { Navbar } from "./components/Navbar";
+import { Router } from "@reach/router";
+import "./App.css";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [visibleCharts, setVisibleCharts] = useState(true);
+    return (
+        <>
+            <Navbar visibleCharts={visibleCharts} setVisibleCharts={setVisibleCharts} />
+            <header className="App">
+                <h1>Project EVA</h1>
+                <Router>
+                    <Overview path="/" visibleCharts={visibleCharts} />
+                    <Article path="eva" visibleCharts={visibleCharts} />
+                </Router>
+            </header>
+        </>
+    );
 }
 
 export default App;

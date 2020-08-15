@@ -1,0 +1,29 @@
+.nav {
+    background-color: #282c34;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.nav a {
+    padding: 5px;
+    text-decoration: none;
+}
+
+.nav > *:last-child {
+    margin-left: auto;
+    margin-right: 5px;
+}
+
+button {
+    font-size: 1rem;
+    background-color: inherit;
+    border: none;
+    color: #61dafb;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
+        "Droid Sans", "Helvetica Neue", sans-serif;
+}
+
+button:focus {
+    outline: none;
+}
