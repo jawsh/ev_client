@@ -15,7 +15,7 @@ export const Article = ({ visibleCharts }) => {
 
     useEffect(() => {
         if (articleId >= 0) {
-            axios.get(`http://localhost:3001/article/?query=${articleId}`).then((res) => {
+            axios.get(`${window.ENV.serverurl}/article/?query=${articleId}`).then((res) => {
                 setData(res.data);
                 console.log(res.data);
             });
