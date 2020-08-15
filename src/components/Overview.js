@@ -11,7 +11,7 @@ export const Overview = ({ visibleCharts }) => {
     const [overview, setOverview] = useState({});
 
     useEffect(() => {
-        axios.get(`http://${window.ENV.serverUrl}/overview/?query=overview`).then((res) => {
+        axios.get(`${window.ENV.serverUrl}/overview/?query=overview`).then((res) => {
             console.log(res);
             setOverview(res.data);
         });
