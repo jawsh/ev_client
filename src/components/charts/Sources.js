@@ -1,30 +1,19 @@
 import React from "react";
-import { Pie } from "react-chartjs-2";
+import { Bar } from "react-chartjs-2";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
-export const CountryChart = ({ overview }) => {
+export const SourcesChart = ({ overview }) => {
     let labels = [];
     let values = [];
 
-    var sortable = [];
-    for (var vehicle in overview) {
-        sortable.push([vehicle, overview[vehicle]]);
+    if (overview) {
+        for (const [key, value] of Object.entries(overview)) {
+            labels.push(key);
+            values.push(value);
+        }
     }
 
-    sortable.sort(function (a, b) {
-        return a[1] - b[1];
-    });
-
-    sortable = sortable.reverse();
-
-    sortable.length = 10;
-
-    sortable.forEach((s) => {
-        labels.push(s[0]);
-        values.push(s[1]);
-    });
-
-    const countryData = {
+    const sourcesData = {
         labels: labels,
         datasets: [
             {
@@ -47,5 +36,5 @@ export const CountryChart = ({ overview }) => {
         ],
     };
 
-    return <>{labels.length > 0 ? <Pie data={countryData} /> : <CircularProgress />}</>;
+    return <>{labels.length > 0 ? <Bar data={sourcesData} /> : <CircularProgress />}</>;
 };

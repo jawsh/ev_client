@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { YearChart } from "./charts/Year";
 import { CountryChart } from "./charts/Country";
+import { SourcesChart } from "./charts/Sources";
 import Grid from "@material-ui/core/Grid";
 import Tooltip from "@material-ui/core/Tooltip";
 import Button from "@material-ui/core/Button";
@@ -52,16 +53,24 @@ export const Overview = ({ visibleCharts }) => {
                 </Tooltip>
             </div>
             {visibleCharts && (
-                <Grid container>
-                    <Grid item xs={12} sm={12} md={6}>
-                        <h5>Articles/Year</h5>
-                        <YearChart overview={overview?.yearData} />
+                <>
+                    <Grid container>
+                        <Grid item xs={12} sm={12} md={6}>
+                            <h5>Articles/Year</h5>
+                            <YearChart overview={overview?.yearData} />
+                        </Grid>
+                        <Grid item xs={12} sm={12} md={6}>
+                            <h5>Top 10 Articles/Country</h5>
+                            <CountryChart overview={overview?.countryData} />
+                        </Grid>
                     </Grid>
-                    <Grid item xs={12} sm={12} md={6}>
-                        <h5>Top 10 Articles/Country</h5>
-                        <CountryChart overview={overview?.countryData} />
+                    <Grid container justify="center">
+                        <Grid item xs={8}>
+                            <h5>Articles/Source</h5>
+                            <SourcesChart overview={overview?.sources} />
+                        </Grid>
                     </Grid>
-                </Grid>
+                </>
             )}
         </>
     );

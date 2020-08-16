@@ -35,6 +35,8 @@ export const ArticleBio = ({ data }) => {
             <p>{data?.m_szYear}</p>
             <p>{data?.m_szGeo1 || "Unknown Geo"}</p>
             <p>{data?.m_szDocTitle}</p>
+            <p>{data?.m_iDocBodyWordCnt} words</p>
+            <p>{data?.m_szSourceType}</p>
             <Button onClick={() => setOpenCompanies(true)} className={classes.stat}>
                 Companies
             </Button>

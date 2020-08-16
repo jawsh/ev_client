@@ -24,6 +24,10 @@ export const Article = ({ visibleCharts }) => {
         <>
             <h4>Article Viewer</h4>
             <div className="summary">
+                <p>
+                    The Article Viewer lets you browse articles to see detailed statistics and information about each
+                    document.
+                </p>
                 <Summary data={data} articleId={articleId} setArticleId={setArticleId} />
             </div>
             {visibleCharts && (
