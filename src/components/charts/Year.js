@@ -1,12 +1,16 @@
 import React from "react";
 import { Line } from "react-chartjs-2";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 export const YearChart = ({ overview }) => {
     let labels = [];
     let values = [];
-    for (const [key, value] of Object.entries(overview)) {
-        labels.push(key);
-        values.push(value);
+
+    if (overview) {
+        for (const [key, value] of Object.entries(overview)) {
+            labels.push(key);
+            values.push(value);
+        }
     }
 
     const yearData = {
@@ -21,5 +25,5 @@ export const YearChart = ({ overview }) => {
         ],
     };
 
-    return <>{labels.length > 0 ? <Line data={yearData} /> : <code>No Year Data Found!</code>}</>;
+    return <>{labels.length > 0 ? <Line data={yearData} /> : <CircularProgress />}</>;
 };

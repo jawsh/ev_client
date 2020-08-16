@@ -61,14 +61,6 @@ export function Summary({ data, articleId, setArticleId }) {
     const classes = useStyles();
     const [value, setValue] = React.useState(1);
 
-    // const articleChange = (e) => {
-    //     if (!e.target.value) {
-    //         setArticleId(0);
-    //     } else if (e.target.value >= 0 && e.target.value <= 9211) {
-    //         setArticleId(e.target.value);
-    //     }
-    // };
-
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
@@ -93,8 +85,10 @@ export function Summary({ data, articleId, setArticleId }) {
                 </Tabs>
             </AppBar>
             <TabPanel value={value} index={1}>
-                {data?.m_szGeo1 || "Unknown Geo"}
-                {data?.m_szDocTitle}
+                <Box>
+                    <p>{data?.m_szGeo1 || "Unknown Geo"}</p>
+                    <p>{data?.m_szDocTitle}</p>
+                </Box>
             </TabPanel>
             <TabPanel value={value} index={2}>
                 {data?.m_szDocSumamry}

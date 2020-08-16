@@ -1,5 +1,6 @@
 import React from "react";
 import { Pie } from "react-chartjs-2";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 export const CountryChart = ({ overview }) => {
     let labels = [];
@@ -47,5 +48,5 @@ export const CountryChart = ({ overview }) => {
         ],
     };
 
-    return <>{labels.length > 0 ? <Pie data={countryData} /> : <code>No Year Data Found!</code>}</>;
+    return <>{labels.length > 0 ? <Pie data={countryData} /> : <CircularProgress />}</>;
 };

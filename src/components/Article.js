@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { BiGramChart } from "./charts/Bigram";
 import { TriGramChart } from "./charts/Trigram";
-import { Navigate } from "./Navigate";
 import { Summary } from "./Summary";
 import Grid from "@material-ui/core/Grid";
 
@@ -15,9 +14,8 @@ export const Article = ({ visibleCharts }) => {
 
     useEffect(() => {
         if (articleId >= 0) {
-            axios.get(`${window.ENV.serverUrl}/article/?query=${articleId}`).then((res) => {
+            axios.get(`${process.env.REACT_APP_SERVER_URL}/article/?query=${articleId}`).then((res) => {
                 setData(res.data);
-                console.log(res.data);
             });
         }
     }, [articleId]);
@@ -40,7 +38,6 @@ export const Article = ({ visibleCharts }) => {
                     </Grid>
                 </>
             )}
-            <Navigate articleId={articleId} setArticleId={setArticleId} />
         </>
     );
 };

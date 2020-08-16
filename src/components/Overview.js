@@ -11,10 +11,14 @@ export const Overview = ({ visibleCharts }) => {
     const [overview, setOverview] = useState({});
 
     useEffect(() => {
-        axios.get(`${window.ENV.serverUrl}/overview/?query=overview`).then((res) => {
-            console.log(res);
-            setOverview(res.data);
-        });
+        if (localStorage.getItem("overview") === null) {
+            axios.get(`${process.env.REACT_APP_SERVER_URL}/overview/?query=overview`).then((res) => {
+                setOverview(res.data);
+                localStorage.setItem("overview", JSON.stringify(res.data));
+            });
+        } else {
+            setOverview(JSON.parse(localStorage.getItem("overview")));
+        }
     }, []);
 
     return (
@@ -27,10 +31,12 @@ export const Overview = ({ visibleCharts }) => {
             {visibleCharts && (
                 <Grid container>
                     <Grid item xs={12} sm={12} md={6}>
-                        {overview?.years && <YearChart overview={overview?.years} />}
+                        <h5>Articles/Year</h5>
+                        <YearChart overview={overview?.yearData} />
                     </Grid>
                     <Grid item xs={12} sm={12} md={6}>
-                        {overview?.countries && <CountryChart overview={overview?.countries} />}
+                        <h5>Articles/Country</h5>
+                        <CountryChart overview={overview?.countryData} />
                     </Grid>
                 </Grid>
             )}
