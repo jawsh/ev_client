@@ -6,18 +6,27 @@ export const SourcesChart = ({ overview }) => {
     let labels = [];
     let values = [];
 
-    if (overview) {
-        for (const [key, value] of Object.entries(overview)) {
-            labels.push(key);
-            values.push(value);
-        }
+    var sortable = [];
+    for (var source in overview) {
+        sortable.push([source, overview[source]]);
     }
+
+    sortable.sort(function (a, b) {
+        return a[1] - b[1];
+    });
+
+    sortable = sortable.reverse();
+
+    sortable.forEach((s) => {
+        labels.push(s[0]);
+        values.push(s[1]);
+    });
 
     const sourcesData = {
         labels: labels,
         datasets: [
             {
-                label: "Article Count",
+                label: "Article Source Categories",
                 backgroundColor: [
                     "#e74c3c",
                     "#3498db",

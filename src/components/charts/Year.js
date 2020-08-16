@@ -17,7 +17,7 @@ export const YearChart = ({ overview }) => {
         labels: labels,
         datasets: [
             {
-                label: "Article Count",
+                label: "Articles per Year",
                 backgroundColor: "#61dafb",
                 borderColor: "white",
                 data: values,

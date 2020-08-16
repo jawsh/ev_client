@@ -7,8 +7,8 @@ export const CountryChart = ({ overview }) => {
     let values = [];
 
     var sortable = [];
-    for (var vehicle in overview) {
-        sortable.push([vehicle, overview[vehicle]]);
+    for (var country in overview) {
+        sortable.push([country, overview[country]]);
     }
 
     sortable.sort(function (a, b) {
@@ -28,7 +28,7 @@ export const CountryChart = ({ overview }) => {
         labels: labels,
         datasets: [
             {
-                label: "Article Count",
+                label: "Articles per Country",
                 backgroundColor: [
                     "#e74c3c",
                     "#3498db",

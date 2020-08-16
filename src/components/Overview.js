@@ -45,8 +45,11 @@ export const Overview = ({ visibleCharts }) => {
                     Project E.V.A (Electric Vehicle Articles) is a web application driven by a large electric vehicle
                     dataset of over 9000 documents.
                 </p>
+                <Tooltip title="The total number of documents in the dataset">
+                    <Button className={classes.stat}>Document Count: {formatNumber(overview?.documentCount)}</Button>
+                </Tooltip>
                 <Tooltip title="The total number of words in all document bodies combined">
-                    <Button className={classes.stat}>Total Words: {formatNumber(overview?.wordCount)}</Button>
+                    <Button className={classes.stat}>Word Count: {formatNumber(overview?.wordCount)}</Button>
                 </Tooltip>
                 <Tooltip title="The total number of times Elon was mentioned in a document body">
                     <Button className={classes.stat}>Elon Count: {formatNumber(overview?.elonCount)}</Button>
@@ -65,8 +68,8 @@ export const Overview = ({ visibleCharts }) => {
                         </Grid>
                     </Grid>
                     <Grid container justify="center">
-                        <Grid item xs={8}>
-                            <h5>Articles/Source</h5>
+                        <Grid item xs={12} m={12} md={8}>
+                            <h5>Articles/Source Category</h5>
                             <SourcesChart overview={overview?.sources} />
                         </Grid>
                     </Grid>
