@@ -11,18 +11,15 @@ export const Overview = ({ visibleCharts }) => {
     const [overview, setOverview] = useState({});
 
     useEffect(() => {
-        // if (localStorage.getItem("overview") === null) {
-        axios.get(`${process.env.REACT_APP_SERVER_URL}/overview/?query=overview`).then((res) => {
-            setOverview(res.data);
-            localStorage.setItem("overview", JSON.stringify(res.data));
-            // });
-            // } else {
-
-            // setOverview(JSON.parse(localStorage.getItem("overview")));
-            // }
-        }, []);
-    });
-
+        if (localStorage.getItem("overview") === null) {
+            axios.get(`${process.env.REACT_APP_SERVER_URL}/overview/?query=overview`).then((res) => {
+                setOverview(res.data);
+                localStorage.setItem("overview", JSON.stringify(res.data));
+            });
+        } else {
+            setOverview(JSON.parse(localStorage.getItem("overview")));
+        }
+    }, []);
     return (
         <>
             <h4>Overview</h4>
