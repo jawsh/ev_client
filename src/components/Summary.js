@@ -8,6 +8,7 @@ import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import { IconButton } from "@material-ui/core";
 import { NavigateNext, NavigateBefore } from "@material-ui/icons";
+import { ArticleBio } from "./ArticleBio";
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -45,7 +46,7 @@ function a11yProps(index) {
 const useStyles = makeStyles((theme) => ({
     root: {
         marginTop: "1rem",
-        width: "80%",
+        width: "100%",
         backgroundColor: "e2e2e2",
         color: "white",
     },
@@ -76,7 +77,7 @@ export function Summary({ data, articleId, setArticleId }) {
                     >
                         <NavigateBefore className={classes.icon} />
                     </IconButton>
-                    <Tab label="Info" {...a11yProps(1)} />
+                    <Tab label="Bio" {...a11yProps(1)} />
                     <Tab label="Summary" {...a11yProps(2)} />
                     <Tab label="Body" {...a11yProps(3)} />
                     <IconButton color="primary" aria-label="next article" onClick={() => setArticleId(articleId + 1)}>
@@ -85,10 +86,7 @@ export function Summary({ data, articleId, setArticleId }) {
                 </Tabs>
             </AppBar>
             <TabPanel value={value} index={1}>
-                <Box>
-                    <p>{data?.m_szGeo1 || "Unknown Geo"}</p>
-                    <p>{data?.m_szDocTitle}</p>
-                </Box>
+                <ArticleBio data={data} />
             </TabPanel>
             <TabPanel value={value} index={2}>
                 {data?.m_szDocSumamry}
@@ -99,40 +97,3 @@ export function Summary({ data, articleId, setArticleId }) {
         </div>
     );
 }
-
-// export const Summary = ({ data, articleId, setArticleId }) => {
-// const articleChange = (e) => {
-//     if (!e.target.value) {
-//         setArticleId(0);
-//     } else if (e.target.value >= 0 && e.target.value <= 9211) {
-//         setArticleId(e.target.value);
-//     }
-// };
-//     return (
-//         <>
-//             <div className="topnav">
-//                 <button
-//                     className="button"
-//                     onClick={() => (articleId === 0 ? setArticleId(0) : setArticleId(articleId - 1))}
-//                 >
-//                     prev
-//                 </button>
-
-//                 <input onChange={articleChange} value={articleId} type="number"></input>
-//                 <button className="button" onClick={() => setArticleId(articleId + 1)}>
-//                     next
-//                 </button>
-//             </div>
-//             <code>{data?.m_szDocTitle}</code>
-//             <code>
-//                 {data?.m_szGeo1 || "Unknown Geo"} - {data?.m_szYear}
-//             </code>
-//             <code>
-//                 {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-//                 <a href={data?.m_szSrcUrl} target="_">
-//                     {data?.m_szSrcUrl}
-//                 </a>
-//             </code>
-//         </>
-//     );
-// };
