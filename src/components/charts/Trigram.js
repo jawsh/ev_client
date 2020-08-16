@@ -5,7 +5,7 @@ export const TriGramChart = ({ data }) => {
     let tricount = data?.m_TriCnt;
     let trigrams = data?.m_TriGrams;
 
-    if (tricount && trigrams) {
+    if (tricount?.length > 10 && trigrams?.length > 10) {
         tricount.length = 10;
         trigrams.length = 10;
     }

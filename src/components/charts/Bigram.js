@@ -5,7 +5,7 @@ export const BiGramChart = ({ data }) => {
     let bicount = data?.m_BiCnt;
     let bigrams = data?.m_BiGrams;
 
-    if (bicount && bigrams) {
+    if (bicount?.length > 10 && bigrams?.length > 10) {
         bicount.length = 10;
         bigrams.length = 10;
     }

@@ -20,6 +20,7 @@ export const Overview = ({ visibleCharts }) => {
             setOverview(JSON.parse(localStorage.getItem("overview")));
         }
     }, []);
+
     return (
         <>
             <h4>Overview</h4>
