@@ -58,7 +58,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export function Summary({ data, articleId, setArticleId }) {
+export const Summary = ({ data, articleId, setArticleId }) => {
     const classes = useStyles();
     const [value, setValue] = React.useState(1);
 
@@ -96,4 +96,4 @@ export function Summary({ data, articleId, setArticleId }) {
             </TabPanel>
         </div>
     );
-}
+};

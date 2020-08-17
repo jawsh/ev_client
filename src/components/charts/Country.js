@@ -11,7 +11,7 @@ export const CountryChart = ({ overview }) => {
         sortable.push([country, overview[country]]);
     }
 
-    sortable.sort(function (a, b) {
+    sortable.sort((a, b) => {
         return a[1] - b[1];
     });
 

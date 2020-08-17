@@ -11,7 +11,7 @@ export const SourcesChart = ({ overview }) => {
         sortable.push([source, overview[source]]);
     }
 
-    sortable.sort(function (a, b) {
+    sortable.sort((a, b) => {
         return a[1] - b[1];
     });
 
