@@ -13,6 +13,10 @@ const useStyles = makeStyles((theme) => ({
     ".MuiPaper-root": {
         backgroundColor: "red",
     },
+    title: {
+        backgroundColor: "#282c34",
+        color: "white",
+    },
 }));
 
 export const ArticleBio = ({ data }) => {
@@ -47,8 +51,8 @@ export const ArticleBio = ({ data }) => {
                 Places
             </Button>
             <Dialog open={openPlaces} onClose={handleClose}>
-                <DialogTitle style={{ backgroundColor: "#282c34", color: "white" }}>Places</DialogTitle>
-                <List style={{ backgroundColor: "#282c34", color: "white" }}>
+                <DialogTitle className={classes.title}>Places</DialogTitle>
+                <List className={classes.title}>
                     {data?.m_Places.map((p) => (
                         <ListItem>
                             <ListItemText primary={p} />
@@ -57,8 +61,8 @@ export const ArticleBio = ({ data }) => {
                 </List>
             </Dialog>
             <Dialog open={openCompanies} onClose={handleClose}>
-                <DialogTitle style={{ backgroundColor: "#282c34", color: "white" }}>Companies</DialogTitle>
-                <List style={{ backgroundColor: "#282c34", color: "white" }}>
+                <DialogTitle className={classes.title}>Companies</DialogTitle>
+                <List className={classes.title}>
                     {data?.m_Companies.map((p) => (
                         <ListItem>
                             <ListItemText primary={p} />
@@ -67,8 +71,8 @@ export const ArticleBio = ({ data }) => {
                 </List>
             </Dialog>
             <Dialog open={openPeople} onClose={handleClose}>
-                <DialogTitle style={{ backgroundColor: "#282c34", color: "white" }}>People</DialogTitle>
-                <List style={{ backgroundColor: "#282c34", color: "white" }}>
+                <DialogTitle className={classes.title}>People</DialogTitle>
+                <List className={classes.title}>
                     {data?.m_People.map((p) => (
                         <ListItem>
                             <ListItemText primary={p} />

@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { YearChart } from "./charts/Year";
+import { YearTable } from "./tables/YearTable";
 import { CountryChart } from "./charts/Country";
+import { CountryTable } from "./tables/CountryTable";
 import { SourcesChart } from "./charts/Sources";
+import { SourcesTable } from "./tables/SourcesTable";
 import Grid from "@material-ui/core/Grid";
 import Tooltip from "@material-ui/core/Tooltip";
 import Button from "@material-ui/core/Button";
@@ -68,7 +71,7 @@ export const Overview = ({ visibleCharts }) => {
                     <Button className={classes.stat}>Elon Count: {formatNumber(overview?.elonCount)}</Button>
                 </Tooltip>
             </div>
-            {visibleCharts && (
+            {visibleCharts ? (
                 <>
                     <Grid container>
                         <Grid item xs={12} sm={12} md={6}>
@@ -81,9 +84,30 @@ export const Overview = ({ visibleCharts }) => {
                         </Grid>
                     </Grid>
                     <Grid container justify="center">
-                        <Grid item xs={12} m={12} md={8}>
+                        <Grid item xs={12} sm={12} md={8}>
                             <h5>Articles/Source Category</h5>
                             <SourcesChart overview={overview?.sources} />
+                        </Grid>
+                    </Grid>
+                </>
+            ) : (
+                <>
+                    <Grid container justify="center">
+                        <Grid item xs={12} m={12} md={8}>
+                            <h5>Articles/Year</h5>
+                            <YearTable overview={overview?.yearData} />
+                        </Grid>
+                    </Grid>
+                    <Grid container justify="center">
+                        <Grid item xs={12} m={12} md={8}>
+                            <h5>Top 10 Articles/Country</h5>
+                            <CountryTable overview={overview?.countryData} />
+                        </Grid>
+                    </Grid>
+                    <Grid container justify="center">
+                        <Grid item xs={12} m={12} md={8}>
+                            <h5>Articles/Source Category</h5>
+                            <SourcesTable overview={overview?.sources} />
                         </Grid>
                     </Grid>
                 </>
