@@ -18,7 +18,19 @@ export const SourcesChart = ({ overview }) => {
     sortable = sortable.reverse();
 
     sortable.forEach((s) => {
-        labels.push(s[0]);
+        let label;
+        let char;
+
+        if (s[0].includes("applications")) {
+            labels.push("Patent Applications");
+        } else if (s[0].includes("_")) {
+            label = s[0].split("_");
+            char = label[1]?.charAt(0).toUpperCase() + label[1]?.slice(1);
+            labels.push(char);
+        } else {
+            labels.push(s[0]);
+        }
+
         values.push(s[1]);
     });
 
