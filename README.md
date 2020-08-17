@@ -22,7 +22,7 @@ Start server using nodemon
 npm start
 ```
 
-####Optional
+Optional
 
 Edit .env file to point your client at a non local instance of ev_server
 
