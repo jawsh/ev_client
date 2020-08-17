@@ -4,7 +4,7 @@ import "../Navbar.css";
 export const HideCharts = ({ visibleCharts, setVisibleCharts }) => {
     return (
         <>
-            <button className="hide" href="" onClick={() => setVisibleCharts(!visibleCharts)}>
+            <button onClick={() => setVisibleCharts(!visibleCharts)}>
                 Show/Hide Charts
                 <span role="img" aria-label="bar-chart">
                     📊

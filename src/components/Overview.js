@@ -20,9 +20,22 @@ export const Overview = ({ visibleCharts }) => {
     const classes = useStyles();
     const [overview, setOverview] = useState({});
 
+    const checkExpired = () => {
+        const expiry = JSON.parse(localStorage.getItem("overview")).expiry;
+        const now = Date.now();
+        const expired = now - expiry;
+        const thirtymins = 1800000;
+        if (expired > thirtymins) {
+            return true;
+        } else {
+            return false;
+        }
+    };
+
     useEffect(() => {
-        if (localStorage.getItem("overview") === null) {
+        if (localStorage.getItem("overview") === null || checkExpired()) {
             axios.get(`${process.env.REACT_APP_SERVER_URL}/overview/?query=overview`).then((res) => {
+                res.data["expiry"] = Date.now();
                 setOverview(res.data);
                 localStorage.setItem("overview", JSON.stringify(res.data));
             });
