@@ -33,6 +33,7 @@ export const ArticleBio = ({ data }) => {
     const classes = useStyles();
     return (
         <>
+            {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
             <a href={data?.m_szSrcUrl} target="_">
                 Article Source
             </a>
